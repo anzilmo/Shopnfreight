@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import Country
+# form .forms import CountryForm
 
 # Create your views here.
 def home(request):
@@ -12,7 +14,7 @@ def signup(request):
     return render(request, 'Login/signup.html')
 
 def dashboard(request):
-    
-    return render(request, 'dashboard.html')
+    countries = Country.objects.all()
+    return render(request, 'dashboard.html',{'countries': countries})
 
 

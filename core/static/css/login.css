@@ -1,7 +1,6 @@
 
-
 .login-container {
-  background: white;
+  background: rgb(255, 255, 255);
   padding: 40px;
   margin: auto;                 /* Center horizontally */
   border-radius: 10px;

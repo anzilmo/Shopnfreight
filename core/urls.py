@@ -1,4 +1,7 @@
+import stat
 from django.urls import path
+
+from shopnfreight import settings
 from . import views
 
 urlpatterns = [
@@ -8,5 +11,5 @@ urlpatterns = [
     path("signup/", views. signup, name="signup"),
     path("dashboard/", views.dashboard, name="dashboardx"),
 
-    
 ]
+

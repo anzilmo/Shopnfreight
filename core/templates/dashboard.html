@@ -777,6 +777,18 @@
           </div>
         </div>
         <!-- Addresses Section -->
+
+
+        {% for country in countries %}
+  <div>
+    <img src="{{ country.country_logo.url }}" alt="{{ country.country_name }}">
+    <h2>{{ country.country_name }}</h2>
+    <p>{{ country.city }}, {{ country.state }} - {{ country.zip_code }}</p>
+    <p>Phone: {{ country.phone_number }}</p>
+    <p>Email: {{ country.email }}</p>
+  </div>
+{% endfor %}
+
         <div class="addresses-section">
           <div class="section-header">
             <h2 class="section-title">Your Addresses</h2>
@@ -802,6 +814,7 @@
                 </button>
               </div>
             </div>
+
 
             <div class="address-card">
               <span class="address-type">UK</span>
