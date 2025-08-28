@@ -3,4 +3,4 @@ from .models import Country
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ('country_name', 'city', 'state', 'zip_code', 'phone_number', 'email')
+    list_display = ( 'id' ,'country_name', 'city', 'state', 'zip_code', 'phone_number', 'email')

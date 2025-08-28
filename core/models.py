@@ -4,9 +4,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.
-
-
-
 # warehouse models Cretig by admin 
 class Country(models.Model):
     country_logo = models.ImageField(upload_to='country_logos/')
@@ -17,6 +14,4 @@ class Country(models.Model):
     zip_code = models.FloatField()
     phone_number = PhoneNumberField() 
     email = models.EmailField()
-
-       
     

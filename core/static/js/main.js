@@ -202,4 +202,74 @@
     
 
         // slider= document
-        
+        // why chocis us section
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            const prevArrow = document.querySelector('.slider-arrow.prev');
+            const nextArrow = document.querySelector('.slider-arrow.next');
+            let currentSlide = 0;
+            let slideInterval;
+
+            // Function to show a specific slide
+            function showSlide(n) {
+                // Hide all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Adjust currentSlide index if out of bounds
+                if (n >= slides.length) currentSlide = 0;
+                else if (n < 0) currentSlide = slides.length - 1;
+                else currentSlide = n;
+
+                // Show the correct slide and activate its dot
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+
+            // Function to go to next slide
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            // Start auto-sliding
+            function startSlideShow() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            // Stop auto-sliding
+            function stopSlideShow() {
+                clearInterval(slideInterval);
+            }
+
+            // Event Listeners for Dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    stopSlideShow();
+                    let slideIndex = parseInt(this.getAttribute('data-slide'));
+                    showSlide(slideIndex);
+                    startSlideShow();
+                });
+            });
+
+            // Event Listeners for Arrows
+            nextArrow.addEventListener('click', () => {
+                stopSlideShow();
+                nextSlide();
+                startSlideShow();
+            });
+            
+            prevArrow.addEventListener('click', () => {
+                stopSlideShow();
+                showSlide(currentSlide - 1);
+                startSlideShow();
+            });
+
+            // Pause slideshow when hovering over slider
+            const slider = document.querySelector('.section-slider');
+            slider.addEventListener('mouseenter', stopSlideShow);
+            slider.addEventListener('mouseleave', startSlideShow);
+
+            // Start the slideshow
+            startSlideShow();
+        });
