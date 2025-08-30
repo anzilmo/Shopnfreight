@@ -21,7 +21,8 @@
 
         <div class="user-profile">
           <h3>USER NAME</h3>
-          <p>{{username}}</p>
+          <p>{{user.username}}</p>
+          <p>(User ID: {{ request.user.profile.user_id_custom }})</p>
         </div>
 
         <ul class="nav-links">
@@ -49,7 +50,9 @@
             <a href="#"><i class="fas fa-question-circle"></i> Support</a>
           </li>
           <li>
-            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="{% url 'logout' %}">
+                     <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
           </li>
         </ul>
       </div>
@@ -229,7 +232,7 @@
           </div>
         </div>
         <!-- Addresses Section -->
-      <style>
+   
   
 
 <div class="country-grid">
@@ -237,6 +240,8 @@
   <div class="country-card">
     <img src="{{ country.country_logo.url }}" alt="{{ country.country_name }}">
     <h2>{{ country.country_name }}</h2>
+    <h3>Username:{{user.username}}</h3>
+    <p>(User ID: {{ request.user.profile.user_id_custom }})</p>
     <p>{{ country.city }}, {{ country.state }} - {{ country.zip_code }}</p>
     <p>📞 {{ country.phone_number }}</p>
     <p>✉️ {{ country.email }}</p>
@@ -303,43 +308,10 @@
         </div>
       </div>
     </div>
+
+
+    
     {% block content %} {% endblock %}
-    <script>
-      // Toggle sidebar on mobile
-      document
-        .getElementById("menuToggle")
-        .addEventListener("click", function () {
-          document.getElementById("sidebar").classList.toggle("active");
-        });
 
-      // Close sidebar when clicking outside on mobile
-      document.addEventListener("click", function (event) {
-        const sidebar = document.getElementById("sidebar");
-        const menuToggle = document.getElementById("menuToggle");
-
-        if (window.innerWidth < 992) {
-          if (
-            !sidebar.contains(event.target) &&
-            event.target !== menuToggle &&
-            !menuToggle.contains(event.target)
-          ) {
-            sidebar.classList.remove("active");
-          }
-        }
-      });
-
-      // Simulate loading animation
-      document.addEventListener("DOMContentLoaded", function () {
-        // Simulate loading data
-        setTimeout(function () {
-          document
-            .querySelectorAll(".stat-card, .package-card, .address-card")
-            .forEach((card) => {
-              card.style.opacity = "1";
-              card.style.transform = "translateY(0)";
-            });
-        }, 300);
-      });
-    </script>
   </body>
 </html>

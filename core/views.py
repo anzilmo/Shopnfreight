@@ -11,6 +11,9 @@ from django.contrib.auth import login
 def home(request):
     return render(request, 'home.html')
 
+def basa(request):
+    return render(request , 'basa.html')
+
 # User Authitication with django
 
 def signup(request):
@@ -25,6 +28,9 @@ def signup(request):
             messages.error(request, "Username already exists.")
         else:
             user = User.objects.create_user(username=username, password=password)
+            
+            custom_id = user.profile.user_id_custom
+            messages.success(request, f"Your User ID is {custom_id}")
             messages.success(request, "Account created successfully. Please login.")
             return redirect('login') 
 
