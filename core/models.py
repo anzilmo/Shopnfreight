@@ -34,3 +34,34 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.user_id_custom}"
+    
+    
+class Warehouse(models.Model):
+    WAREHOUSE_CHOICES = [
+        ('ChW001', 'ChW001'),
+        ('TUW002', 'TUW002'),
+        ('QRW003', 'QRW003'),
+        ('UAEW04', 'UAEW04'),
+        ('USAW05', 'USAW05'),
+        ('BAW006', 'BAW006'),
+    ]
+
+    country_name = models.CharField(max_length=100)
+    warehouse_id = models.CharField(max_length=10, choices=WAREHOUSE_CHOICES, unique=True)
+
+    def __str__(self):
+        return f"{self.country_name} - {self.warehouse_id}"   
+
+class Shipment(models.Model):
+    suit_number = models.CharField(max_length=50)
+    tracking_number = models.CharField(max_length=50)
+    shipping_company = models.CharField(max_length=100)
+    width = models.FloatField()
+    height = models.FloatField()
+    weight = models.FloatField()
+    package_type = models.CharField(max_length=50)
+    arrival_date = models.DateField()
+    warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.suit_number} - {self.tracking_number}"

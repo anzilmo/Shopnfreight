@@ -20,9 +20,9 @@
         </div>
 
         <div class="user-profile">
-          <h3>USER NAME</h3>
-          <p>{{user.username}}</p>
-          <p>(User ID: {{ request.user.profile.user_id_custom }})</p>
+          <h6>USER NAME</h6>
+          <h3>{{user.username}}</h3>
+         <h3>(User ID: {{ request.user.profile.user_id_custom }})</h3>
         </div>
 
         <ul class="nav-links">
@@ -77,7 +77,7 @@
             </div>
 
             <div class="user-menu">
-              <span>@username</span>
+              <span>{{user.username}}</span>
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@
         <h1 class="dashboard-title">Dashboard</h1>
 
         <div class="welcome-banner">
-          <h2>Welcome USERNAME!</h2>
+          <h2>Welcome {{user.username}}</h2>
           <p>
             You have 3 packages in transit and 2 new notifications. Your recent
             activity is shown below.

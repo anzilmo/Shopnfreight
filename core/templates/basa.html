@@ -25,7 +25,7 @@
 
                 
                 <ul class="nav-menu">
-                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
                     <li><a href="#" class="nav-link">Our Services</a></li>
                     <li><a href="#" class="nav-link">Promotiond</a></li>
                     <li><a href="#" class="nav-link">Help</a></li>
@@ -36,8 +36,8 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
     </div>
                 <div class="nav-actions">
-                    <button class="btn btn-login">Login</button>
-                    <button class="btn btn-signup">Sign Up</button>
+                    <a href="{% url 'login' %}"><button class="btn btn-login">Login</button></a>
+                    <a href="{% url 'signup' %}"><button class="btn btn-signup">Sign Up</button></a>
                     <div class="language-selector">
                        <span class="selected-language">English</span>
                        <i class="fas fa-chevron-down"></i>

@@ -12,6 +12,13 @@ urlpatterns = [
     path("signup/", views. signup, name="signup"),
     path('logout/',views.logout, name='logout'),
     path("dashboard/", views.dashboard, name="dashboard"),
+    path('warehouse-login/', views.warehouse_login, name='warehouse_login'),
+    path('warehouse-dashboard/', views.warehouse_dashboard, name='warehouse_dashboard'),
+    path('manage-customers/', views.manage_customers, name='Manage-Customers'),
+    path('shipment/', views.shipment_view, name='shipment'),
+    path('manage-customers/', views.manage_customers, name='manage-customers'),
+
+    
     
 
 ]
