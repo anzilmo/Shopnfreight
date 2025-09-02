@@ -8,6 +8,7 @@ from django.contrib.auth import login
 from .models import Warehouse , Profile
 from .forms import ShipmentCustomForm
 from .models import Shipment
+
 # form .forms import CountryForm
 
 # Create your views here.
@@ -59,7 +60,23 @@ def logout(request):
 @login_required
 def dashboard(request):
     countries = Country.objects.all()
-    return render(request, 'dashboard.html',{'countries': countries})
+
+    # Get the logged-in user's profile
+    profile = Profile.objects.get(user=request.user)  
+
+    # Access the custom suit_number from profile
+    suit_number = profile.user_id_custom  
+
+    # Filter shipments using suit_number
+    shipments = Shipment.objects.filter(suit_number=suit_number)
+
+    return render(request, 'dashboard.html', {
+        'countries': countries,
+        'shipments': shipments,
+        'profile': profile
+    })
+
+
 
 
 def warehouse_login(request):
